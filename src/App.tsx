@@ -1,42 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-import Loading from "./Components/Loading/Loading";
-import Table from "./Components/Table/Table";
-
-import "./App.css";
-
-type Student = {
-  id: number;
-  firstName: string;
-  lastName: string;
-  age: number;
-};
+import Loading from './Components/Loading/Loading';
+import Table, { Student } from './Components/Table/Table';
+import instance from './helper/axiosInstance';
+import './App.css';
 
 const App: React.FC = () => {
   const [students, setStudents] = useState<Student[] | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
   const fetchStudents = () => {
-    fetch("http://localhost:5058/api/student/getAllStudents")
+    instance
+      .get('/todos/')
       .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data: Student[]) => {
-        setStudents(data);
+        setStudents(response.data);
         setLoading(false);
       })
       .catch((error) => {
-        console.error("Error fetching students:", error);
+        console.error('Error fetching students:');
         setLoading(false);
       });
   };
 
   useEffect(() => {
     fetchStudents();
-    console.log(students)
+    console.log(students);
   }, []);
 
   if (loading) {

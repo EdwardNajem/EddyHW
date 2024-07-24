@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
-import styles from "./table.module.css";
+import styles from './table.module.css';
 
-type Student = {
+export type Student = {
+  userId: number;
   id: number;
-  firstName: string;
-  lastName: string;
-  age: number;
+  title: string;
+  completed: boolean;
 };
 
 type TableProps = {
@@ -29,9 +29,9 @@ const Table: React.FC<TableProps> = ({ students }) => {
           {students.map((student) => (
             <tr key={student.id} className={styles.tableBodyRow}>
               <td>{student.id}</td>
-              <td>{student.firstName}</td>
-              <td>{student.lastName}</td>
-              <td>{student.age}</td>
+              <td>{student.title}</td>
+              <td>{student.userId}</td>
+              <td>{student.completed}</td>
             </tr>
           ))}
         </tbody>
