@@ -1,0 +1,26 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  background-color: #d3d3d3;
+
+  --gray: #474343;
+  --offWhite: #fdfdfd;
+  --lightGray: #aaa;
+  --blue: #5d78c8;
+  --red: #b22626;
+}
+
+body {
+  margin: 0 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
